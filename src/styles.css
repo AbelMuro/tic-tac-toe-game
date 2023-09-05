@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'outfit';
+    src: url('./Fonts/Outfit-VariableFont_wght.ttf');
+}
+:root{
+    --font: 'outfit';
+    --Silver: #A8BFC9;
+    --Semi-Dark-Navy: #1F3641;
+    --Dark-Navy: #1A2A33;
+    --Light-Yellow: #F2B137;
+    --light-yellow-hover: #FFC860;
+    --Light-Blue: #31C3BD;
+    --light-blue-hover: #65E9E4;
+    --closest: 100;
+    --closer: 75;
+    --close: 50;
+    --far: 25;
+    --farthest: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    transition: all 0.2s linear;
+}
+
+body{
+    background-color: var(--Dark-Navy);
+}

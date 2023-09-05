@@ -1,0 +1,15 @@
+.container{
+    width: 460px;
+    height: 623px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+}
+
+
+
+.headerBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
