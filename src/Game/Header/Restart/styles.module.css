@@ -20,4 +20,11 @@
 .icon{
     width: 20px;
     object-fit: contain;
+    transform: rotate(0deg);
 }
+
+.container:hover .icon{
+    transform: rotate(360deg)
+}
+
+
