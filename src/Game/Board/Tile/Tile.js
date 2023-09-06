@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
+import { createSelector } from '@reduxjs/toolkit';
 import styles from './styles.module.css';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import { motion } from 'framer-motion';
 import marks from './marks'
 
@@ -8,15 +9,11 @@ function Tile({row, column}) {
     const [tileSelected, setTileSelected] = useState(false);
     const restart = useSelector(state => state.restart);
     const turn = useSelector(state => state.turn);
+    const winningTiles = useSelector(state => state.board.winningTiles, shallowEqual);  //this is where i left off   
     const dispatch = useDispatch();
     const markRef = useRef();
     const tileRef = useRef();    
-    const {winningTiles, winningMark} = useSelector(state => {
-        return {
-            winningTiles: state.board.winningTiles, 
-            winningMark: state.board.winningMark
-        }
-    });
+
 
     const handleMark = () => {
         setTileSelected(true);
@@ -33,6 +30,7 @@ function Tile({row, column}) {
     }, [tileSelected])
 
     useEffect(() => {
+        console.log('turn')
         if(tileSelected) return;
         markRef.current.src = turn === 'x' ? marks['hoverIconX'] : marks['hoverIconO'];
     }, [turn])
