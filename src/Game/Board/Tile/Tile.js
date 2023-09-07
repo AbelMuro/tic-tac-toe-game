@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, memo} from 'react';
 import styles from './styles.module.css';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import { motion } from 'framer-motion';
 import marks from './marks'
 
-function Tile({row, column}) {
+function Tile({row, column, setTilesSelected}) {
     const tile = useSelector(state => state.board.tiles[row][column])
     const turn = useSelector(state => state.turn);
     const winningTiles = useSelector(state => state.board.winningTiles, shallowEqual);  
@@ -16,8 +16,9 @@ function Tile({row, column}) {
         tileRef.current.style.pointerEvents = 'none';
         markRef.current.src = turn === 'x' ? marks['iconX'] : marks['iconO'];
         markRef.current.style.transform = 'scale(1)';
+        setTilesSelected(prevState => prevState + 1);
         dispatch({type: 'UPDATE_BOARD', row, column, turn});    
-        dispatch({type: 'CHECK_BOARD'});    
+        dispatch({type: 'CHECK_BOARD'});         
         dispatch({type: 'CHANGE_TURN'});
     }
 
@@ -53,4 +54,4 @@ function Tile({row, column}) {
     )
 }
 
-export default Tile;
+export default memo(Tile);

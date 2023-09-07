@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: height 0.2s linear;
+    transition: transform 0.2s linear;
 }
 
 .title{
