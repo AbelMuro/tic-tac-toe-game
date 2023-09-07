@@ -10,12 +10,12 @@ function MainMenu() {
     const dispatch = useDispatch();
 
     const playAgainstCPU = () => {
-        dispatch({type: 'VERSUS_CPU', against: 'cpu'})
+        dispatch({type: 'UPDATE_PLAYER', against: 'cpu'})
         navigate('/game')
     }
 
     const playAgainstPlayer = () => {
-        dispatch({type: 'VERSUS_PLAYER', against: 'player'})
+        dispatch({type: 'UPDATE_PLAYER', against: 'player'})
         navigate('/game')
     }
 

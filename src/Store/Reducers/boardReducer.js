@@ -18,7 +18,7 @@ const checkBoard = (board) => {
                 break;
         }
         if(consecutiveMarks.length === 3)
-            return {winningMark: consecutiveMarks[0], winningTiles};
+            return {winner: consecutiveMarks[0], winningTiles};
         
         else{
             while(consecutiveMarks.length) consecutiveMarks.pop();
@@ -43,7 +43,7 @@ const checkBoard = (board) => {
                 break;
         }
         if(consecutiveMarks.length === 3)
-            return {winningMark: consecutiveMarks[0], winningTiles};
+            return {winner: consecutiveMarks[0], winningTiles};
     
         else{
             while(consecutiveMarks.length) consecutiveMarks.pop();
@@ -67,7 +67,7 @@ const checkBoard = (board) => {
     }
 
     if(consecutiveMarks.length === 3)
-        return {winningMark: consecutiveMarks[0], winningTiles};
+        return {winner: consecutiveMarks[0], winningTiles};
     else{
         while(consecutiveMarks.length) consecutiveMarks.pop();
         while(winningTiles.length) winningTiles.pop();
@@ -90,14 +90,14 @@ const checkBoard = (board) => {
     }    
 
     if(consecutiveMarks.length === 3)
-        return {winningMark: consecutiveMarks[0], winningTiles};
+        return {winner: consecutiveMarks[0], winningTiles};
 
     else{
         while(consecutiveMarks.length) consecutiveMarks.pop();
         while(winningTiles.length) winningTiles.pop();
     }
 
-    return {winningMark: '', winningTiles}
+    return {winner: '', winningTiles}
 }
 
 
@@ -109,7 +109,7 @@ export default function boardReducer(board = {
         [0,0,0],
         [0,0,0],
         [0,0,0]],
-    winningMark: '',
+    winner: '',
     winningTiles: []
 }, action) {
 
@@ -131,18 +131,20 @@ export default function boardReducer(board = {
                 else
                     return row;
             });
-            return {tiles: newTiles, winningMark: board.winningMark, winningTiles: board.winningTiles};
+            return {tiles: newTiles, winner: board.winner, winningTiles: board.winningTiles};
         case 'CHECK_BOARD':
-            const {winningMark, winningTiles} = checkBoard(allTiles);
-            return {tiles: allTiles, winningMark, winningTiles}
-
+            const {winner, winningTiles} = checkBoard(allTiles);
+            return {tiles: allTiles, winner, winningTiles}
+        case 'SET_DRAW':
+            return {tiles: board.tiles, winner: 'draw', winningTiles: []}
+        case 'NEW_GAME':
         case 'RESTART':
             return {
                 tiles: [
                     [0,0,0],
                     [0,0,0],
                     [0,0,0]],
-                winningMark: '',
+                winner: '',
                 winningTiles: []
             }    
         default:

@@ -1,14 +1,14 @@
-export default function scoreBoardReducer(score = {x: 0, o: 0, ties: 0}, action) {
+export default function scoreBoardReducer(scores = {x: 0, o: 0, ties: 0}, action) {
     switch(action.type){
         case 'UPDATE_SCORE_X':
-            return {x: score.x + 1, o: score.o, ties: score.ties};
+            return {x: scores.x + 1, o: scores.o, ties: scores.ties};
         case 'UPDATE_SCORE_O':
-            return {x: score.x, o: score.o + 1, ties: score.ties};
+            return {x: scores.x, o: scores.o + 1, ties: scores.ties};
         case 'UPDATE_TIES':
-            return {x: score.x, o: score.o, ties: score.ties + 1};
+            return {x: scores.x, o: scores.o, ties: scores.ties + 1};
         case 'RESTART': 
-            return 0;
+            return {x: 0, o: 0, ties: 0};
         default: 
-            return score;
+            return scores;
     }
 }

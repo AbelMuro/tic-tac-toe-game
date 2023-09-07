@@ -4,9 +4,8 @@ import styles from './styles.module.css';
 import icons from './icons';
 import {motion} from 'framer-motion';
 
-
 function SelectMark() {
-    const mark = useSelector(state => state.playerOneMark);
+    const mark = useSelector(state => state.menuOptions.playerOneMark);
     const dispatch = useDispatch();
 
     const handleMark = (e) => {
