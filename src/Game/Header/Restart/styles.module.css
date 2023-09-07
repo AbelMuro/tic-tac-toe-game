@@ -67,8 +67,8 @@
 }
 
 
-.cancel, .restart{
-    height: 52px;    
+.cancel, .restart{ 
+    height: 48px;  
     color: var(--Dark-Navy);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -86,13 +86,28 @@
 
 .cancel{
     width: 139px;
-    background: var(--Silver);
-    box-shadow: 0px -4px 0px 0px #6B8997 inset;
+    background-color: var(--Silver);
+    box-shadow: 0px 4px 0px 0px #6B8997;
     justify-self: end;
+    position: relative;
+    bottom: 0px;
+}
+
+.cancel:hover{
+    bottom: 5px;
+    box-shadow: 0px 9px 0px 0px #6B8997;
+    background-color: var(--Silver-Hover);
 }
 
 .restart{
     width: 151px;
     background: var(--Light-Yellow);
-    box-shadow: 0px -4px 0px 0px #CC8B13 inset;
+    box-shadow: 0px 4px 0px 0px #CC8B13;
+    position: relative;
+    bottom: 0px;
+}
+.restart:hover{
+    bottom: 5px;
+    box-shadow: 0px 9px 0px 0px #CC8B13;
+    background-color: var(--light-yellow-hover, #FFC860);
 }

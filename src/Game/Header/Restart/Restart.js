@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import restartIcon from './icons';
 
 
-///this is where i left off i will need to make the hover states for the buttons below
+///this is where i left off i will need to work on the responsiveness
 function Restart() {
     const dispatch = useDispatch();
 
