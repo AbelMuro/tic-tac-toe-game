@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Tile from './Tile';
 import styles from './styles.module.css';
 
+
+//now i need to work on the responsiveness of this component
 function Board(){
     const [tilesSelected, setTilesSelected] = useState(0);
     const winner = useSelector(state => state.board.winner)
@@ -19,6 +21,7 @@ function Board(){
             setTilesSelected(0);
     }, [tilesSelected, winner])
 
+
     return(
         <div className={styles.container}>
             <Tile row={0} column={0} setTilesSelected={setTilesSelected}/>
@@ -34,4 +37,4 @@ function Board(){
     )
 }
 
-export default Board;
+export default memo(Board);

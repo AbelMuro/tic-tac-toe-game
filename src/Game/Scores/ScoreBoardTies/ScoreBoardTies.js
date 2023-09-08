@@ -2,8 +2,6 @@ import React from 'react';
 import { useSelector} from 'react-redux';
 import styles from './styles.module.css';
 
-
-
 function ScoreBoardTies() {
     const ties = useSelector(state => state.scores.ties);
 

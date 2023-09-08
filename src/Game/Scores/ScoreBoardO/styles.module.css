@@ -33,3 +33,20 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
+
+@media(max-width: 550px){
+    .container{
+        width: 96px;
+        height: 64px;
+    }
+
+    .title{
+        font-size: 12px;
+        letter-spacing: 0.75px;
+    }
+
+    .score{
+        font-size: 20px;
+        letter-spacing: 1.25px;
+    }
+}

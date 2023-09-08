@@ -28,3 +28,18 @@
     transform: scale(1);
 }
 
+@media(max-width: 550px){
+    .container{
+        height: 90px;
+        box-shadow: 0px 6px 0px 0px #10212A;
+    }
+
+    .container:hover{
+        bottom: 3px;
+        box-shadow: 0px 9px 0px 0px #10212A;
+    }
+
+    .mark{
+        width: 40px;
+    }
+}

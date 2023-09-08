@@ -9,3 +9,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media(max-width: 550px){
+    .headerBar{
+        margin-bottom: 48px;
+    }
+}

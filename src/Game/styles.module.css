@@ -8,3 +8,8 @@
     inset: 0;
     margin: auto;
 }
+@media(max-width: 550px){
+    .container{
+        width: 328px;
+    }
+}

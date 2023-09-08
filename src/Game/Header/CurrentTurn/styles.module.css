@@ -16,3 +16,22 @@
     line-height: normal;
     letter-spacing: 1px;
 }
+
+.icons{
+    width: 20px;
+    object-fit: contain;
+}
+
+@media(max-width: 550px){
+
+    .container{
+        width: 96px;
+        height: 40px;
+        font-size: 0.875rem;
+        gap: 9px;
+        padding-bottom: 4px;
+    }
+    .icons{
+        width: 16px;
+    }
+}
