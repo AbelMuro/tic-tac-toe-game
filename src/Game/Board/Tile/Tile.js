@@ -4,25 +4,23 @@ import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import { motion } from 'framer-motion';
 import marks from './marks'
 
-function Tile({row, column, setTilesSelected}) {
+function Tile({row, column, setTilesSelected, variants}) {
     const tile = useSelector(state => state.board.tiles[row][column])
     const turn = useSelector(state => state.turn);
     const winningTiles = useSelector(state => state.board.winningTiles, shallowEqual);  
-    const menuOptions = useSelector(state => state.menuOptions);
     const dispatch = useDispatch();
     const markRef = useRef();
     const tileRef = useRef();    
+
+    const childVariants = {
+        hidden: {opacity: 0},
+        show: {opacity: 1}
+    }
 
     const handleMark = () => {
         dispatch({type: 'UPDATE_BOARD', row, column, turn});    
         dispatch({type: 'CHECK_BOARD'}); 
         dispatch({type: 'CHANGE_TURN'});  
-        if(menuOptions.playerAgainst === 'cpu' && menuOptions.playerOneMark === 'x'){
-            dispatch({type: 'CPU_MOVE', mark: 'o'});
-            dispatch({type: 'CHECK_BOARD'}); 
-            dispatch({type: 'CHANGE_TURN'});           
-        }
-
     }
 
     //useEffect that decides which icon to display when the user hovers over the tile
@@ -50,7 +48,6 @@ function Tile({row, column, setTilesSelected}) {
     //we check if there are 3 consecutives marks on the board
     useEffect(() => {
         if(!winningTiles.length) return;
-
         winningTiles.map((winningTile) => {
             if(winningTile[0] === row && winningTile[1] === column){
                 tileRef.current.style.backgroundColor = tile === 'x' ? '#31C3BD' : '#F2B137';
@@ -59,10 +56,11 @@ function Tile({row, column, setTilesSelected}) {
         })
     }, [winningTiles])
 
+    //need to use delayChildren here
     return(
-        <div className={styles.container} onClick={handleMark} ref={tileRef}>
-            <img className={styles.mark} ref={markRef}/>
-        </div>
+        <motion.div className={styles.container} onClick={handleMark} ref={tileRef} variants={variants} transition={{when: 'beforeChildren'}}>
+            <motion.img className={styles.mark} ref={markRef} variants={childVariants}/>
+        </motion.div>
     )
 }
 

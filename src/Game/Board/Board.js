@@ -3,12 +3,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import Tile from './Tile';
 import styles from './styles.module.css';
 
-
-//now i need to work on the responsiveness of this component
-function Board(){
+function Board({variants}){
     const [tilesSelected, setTilesSelected] = useState(0);
     const winner = useSelector(state => state.board.winner)
     const dispatch = useDispatch();
+
 
     //this will check if the game is a draw
     useEffect(() => {
@@ -24,15 +23,15 @@ function Board(){
 
     return(
         <div className={styles.container}>
-            <Tile row={0} column={0} setTilesSelected={setTilesSelected}/>
-            <Tile row={0} column={1} setTilesSelected={setTilesSelected}/>
-            <Tile row={0} column={2} setTilesSelected={setTilesSelected}/>
-            <Tile row={1} column={0} setTilesSelected={setTilesSelected}/>
-            <Tile row={1} column={1} setTilesSelected={setTilesSelected}/>
-            <Tile row={1} column={2} setTilesSelected={setTilesSelected}/>
-            <Tile row={2} column={0} setTilesSelected={setTilesSelected}/>
-            <Tile row={2} column={1} setTilesSelected={setTilesSelected}/>
-            <Tile row={2} column={2} setTilesSelected={setTilesSelected}/>
+            <Tile row={0} column={0} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={0} column={1} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={0} column={2} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={1} column={0} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={1} column={1} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={1} column={2} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={2} column={0} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={2} column={1} setTilesSelected={setTilesSelected} variants={variants}/>
+            <Tile row={2} column={2} setTilesSelected={setTilesSelected} variants={variants}/>
         </div>
     )
 }

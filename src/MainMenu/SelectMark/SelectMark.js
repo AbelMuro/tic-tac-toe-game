@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import icons from './icons';
 import {motion} from 'framer-motion';
 
-function SelectMark() {
+function SelectMark({variants}) {
     const mark = useSelector(state => state.menuOptions.playerOneMark);
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ function SelectMark() {
     }
 
     return(
-        <section className={styles.container}>
+        <motion.section className={styles.container} variants={variants}>
             <h1 className={styles.title}>
                 PICK PLAYER 1'S MARK
             </h1>
@@ -31,7 +31,7 @@ function SelectMark() {
             <h2 className={styles.message}>
                 REMEMBER : X GOES FIRST
             </h2>
-        </section>
+        </motion.section>
     )
 }
 
