@@ -107,7 +107,7 @@ export default function boardReducer(board = {
         [0,0,0],
         [0,0,0]],
     winner: '',
-    winningTiles: []
+    winningTiles: [],
 }, action) {
 
     const allTiles = board.tiles;
@@ -155,8 +155,12 @@ export default function boardReducer(board = {
             return {tiles: newTiles, winner: board.winner, winningTiles: board.winningTiles};
         case 'CHECK_BOARD':
             const {winner, winningTiles} = checkBoard(allTiles);
-            return {tiles: allTiles, winner, winningTiles}
-
+            return {tiles: allTiles, winner: winner, winningTiles}
+        case 'CHECK_DRAW': 
+            if(!allTiles[0].includes(0) && !allTiles[1].includes(0) && !allTiles[2].includes(0) && !board.winner)
+                return {tiles: allTiles, winner: 'draw', winningTiles: []}   
+            else
+                return board;
         case 'SET_DRAW':
             return {tiles: board.tiles, winner: 'draw', winningTiles: []}
         case 'NEW_GAME':

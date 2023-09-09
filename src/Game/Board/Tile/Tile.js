@@ -20,7 +20,9 @@ function Tile({row, column, setTilesSelected, variants}) {
     const handleMark = () => {
         dispatch({type: 'UPDATE_BOARD', row, column, turn});    
         dispatch({type: 'CHECK_BOARD'}); 
+        dispatch({type: 'CHECK_DRAW'});
         dispatch({type: 'CHANGE_TURN'});  
+
     }
 
     //useEffect that decides which icon to display when the user hovers over the tile
@@ -36,13 +38,11 @@ function Tile({row, column, setTilesSelected, variants}) {
             markRef.current.src = turn === 'x' ? marks['hoverIconX'] : marks['hoverIconO'];
             markRef.current.style.transform = '';
             tileRef.current.style.backgroundColor = '';   
-            setTilesSelected(0);
         }
         else{                                               //tile has been selected
             tileRef.current.style.pointerEvents = 'none';
             markRef.current.src = tile === 'x' ? marks['iconX'] : marks['iconO'];
             markRef.current.style.transform = 'scale(1)';
-            setTilesSelected(prevState => prevState + 1);
         }
     }, [tile])
 
@@ -57,7 +57,7 @@ function Tile({row, column, setTilesSelected, variants}) {
         })
     }, [winningTiles])
 
-    //need to use delayChildren here
+
     return(
         <motion.div className={styles.container} onClick={handleMark} ref={tileRef} variants={variants} transition={{when: 'beforeChildren'}}>
             <motion.img className={styles.mark} ref={markRef} variants={childVariants}/>
