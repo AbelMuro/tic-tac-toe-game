@@ -137,7 +137,6 @@ export default function boardReducer(board = {
                 return {tiles: copyTiles, winner: board.winner, winningTiles: board.winningTiles}                
             }
 
-
         case 'UPDATE_BOARD':
             const rowToUpdate = action.row;
             const columnToUpdate = action.column;
@@ -157,7 +156,6 @@ export default function boardReducer(board = {
         case 'CHECK_BOARD':
             const {winner, winningTiles} = checkBoard(allTiles);
             return {tiles: allTiles, winner, winningTiles}
-
 
         case 'SET_DRAW':
             return {tiles: board.tiles, winner: 'draw', winningTiles: []}

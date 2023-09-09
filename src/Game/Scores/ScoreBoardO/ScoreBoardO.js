@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
+import {motion} from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles.module.css';
 
-function ScoreBoardO() {
+function ScoreBoardO({variants}) {
     const score = useSelector(state => state.scores.o);
     const playerOneMark = useSelector(state => state.menuOptions.playerOneMark);
     const playingAgainst = useSelector(state => state.menuOptions.playerAgainst);
@@ -23,14 +24,14 @@ function ScoreBoardO() {
     }, [winner])
 
     return(
-        <section className={styles.container}>
+        <motion.section className={styles.container} variants={variants}>
             <h1 className={styles.title}>
                 {playerTitle()}
             </h1>
             <p className={styles.score}>
                 {score}
             </p>
-        </section>
+        </motion.section>
     )
 }
 

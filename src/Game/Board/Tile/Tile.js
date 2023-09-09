@@ -36,6 +36,7 @@ function Tile({row, column, setTilesSelected, variants}) {
             markRef.current.src = turn === 'x' ? marks['hoverIconX'] : marks['hoverIconO'];
             markRef.current.style.transform = '';
             tileRef.current.style.backgroundColor = '';   
+            setTilesSelected(0);
         }
         else{                                               //tile has been selected
             tileRef.current.style.pointerEvents = 'none';

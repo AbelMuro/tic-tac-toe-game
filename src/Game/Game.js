@@ -27,18 +27,18 @@ function Game() {
     useEffect(() => {
         const playerOneMark = menuOptions.playerOneMark;
         const against = menuOptions.playerAgainst;
-
-        if(against === 'cpu' && playerOneMark !== turn){        
+        if(against === 'cpu' && playerOneMark !== turn && !winner){    
             containerRef.current.style.pointerEvents = 'none';
+            //the problem is that CHECK_BOARD action is reseting the winner property in the state,
             setTimeout(() => {
-                if(!containerRef.current || winner) return;
+                if(!containerRef.current) return;
                 dispatch({type: 'CPU_MOVE', mark: turn})
                 dispatch({type: 'CHECK_BOARD'});
                 dispatch({type: 'CHANGE_TURN'});  
                 containerRef.current.style.pointerEvents = '';      
             }, 800)
         } 
-    },[board])
+    },[board, winner])
 
     return (
         <>        

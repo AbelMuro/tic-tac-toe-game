@@ -8,7 +8,6 @@ function Board({variants}){
     const winner = useSelector(state => state.board.winner)
     const dispatch = useDispatch();
 
-
     //this will check if the game is a draw
     useEffect(() => {
         if(tilesSelected === 9 && !winner){
@@ -17,7 +16,7 @@ function Board({variants}){
             dispatch({type: 'SET_DRAW'});         
         }
         else if(winner)
-            setTilesSelected(0);
+            setTilesSelected(0)
     }, [tilesSelected, winner])
 
 
